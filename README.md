@@ -1,34 +1,35 @@
 <div align="center">
 
-# ⚡ FlashWire v2.0 (Windows)
-### Yüksek Hızlı DPI (Derin Paket İnceleme) ve DNS Engeli Aşma Kalkanı
+# ⚡ FlashWire v2.0
+### Windows & Android İçin Yüksek Hızlı DPI ve DNS Engeli Aşma Kalkanı
 
 <p align="center">
   <img src="assets/preview.png" alt="FlashWire v2.0 Arayüzü" width="340" style="border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
 </p>
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20(x64)-blue.svg?style=for-the-badge&logo=windows)](https://github.com/beratcemzengin/flashwire)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Android-blue.svg?style=for-the-badge&logo=windows)](https://github.com/beratcemzengin/flashwire)
 [![Version](https://img.shields.io/badge/Versiyon-v2.0-FFB800.svg?style=for-the-badge&logo=speedtest)](https://github.com/beratcemzengin/flashwire/releases)
 [![License](https://img.shields.io/badge/Lisans-MIT-green.svg?style=for-the-badge)](LICENSE)
 [![Zero Ping Loss](https://img.shields.io/badge/Ping%20Kaybı-%C2%B10%20ms%20(VPN%20Değil)-success.svg?style=for-the-badge)](#-flashwire-nedir-ve-neler-yapabilir)
 
-**FlashWire**, Türkiye'deki internet servis sağlayıcılarının (Turkcell, Vodafone, Türk Telekom, TurkNet, Kablonet) uyguladığı DPI (Deep Packet Inspection) ve DNS filtrelerini yerel paket desenkronizasyonu tekniğiyle aşan, **sıfır ping ve hız kaybıyla** çalışan bağımsız (portable) bir Windows masaüstü aracıdır.
+**FlashWire**, Türkiye'deki internet servis sağlayıcılarının (Turkcell, Vodafone, Türk Telekom, TurkNet, Kablonet) uyguladığı DPI (Deep Packet Inspection) ve DNS filtrelerini yerel paket desenkronizasyonu tekniğiyle aşan, **sıfır ping ve hız kaybıyla** çalışan bağımsız bir güvenlik ve erişim aracıdır.
 
 ---
 
 </div>
 
-## 📦 İndir (Release)
+## 📦 İndir (Releases)
 
-Kurulum gerektirmez; dosyayı indirip doğrudan çalıştırabilirsiniz.
+Hem masaüstü bilgisayarınız (Windows) hem de cep telefonunuz (Android) için güncel sürümleri doğrudan indirebilirsiniz:
 
-| Dosya Adı | Açıklama | Boyut | Bağlantı |
-| :--- | :--- | :---: | :---: |
-| **`FlashWire-v2.0-Windows-x64.zip`** | **Önerilen Paket** (FlashWire.exe + Hızlı Başlatıcı + Kullanım Kılavuzu) | ~2.0 MB | [⬇️ İndir (.ZIP)](release/FlashWire-v2.0-Windows-x64.zip) |
-| **`FlashWire.exe`** | Tek Dosya Bağımsız Çalıştırılabilir Uygulama (Portable) | ~2.0 MB | [⬇️ İndir (.EXE)](release/FlashWire.exe) |
+| Platform | Dosya Adı | Açıklama | Boyut | İndirme Bağlantısı |
+| :---: | :--- | :--- | :---: | :---: |
+| 🪟 **Windows** | **`FlashWire-v2.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (.ZIP)](release/FlashWire-v2.0-Windows-x64.zip) |
+| 🪟 **Windows** | **`FlashWire.exe`** | Tek Dosya Bağımsız Portable Uygulama | ~2.0 MB | [⬇️ İndir (.EXE)](release/FlashWire.exe) |
+| 🤖 **Android** | **`FlashWire-v2.0-Android.apk`** | **Android Mobil Uygulama** (Telefon & Tablet) | ~3.5 MB | [⬇️ İndir (.APK)](release/FlashWire-v2.0-Android.apk) |
 
-> [!NOTE]  
-> Sürüm notları ve SHA-256 doğrulama kodları için [RELEASE_NOTES.md](RELEASE_NOTES.md) dosyasını inceleyebilirsiniz.
+> [!TIP]  
+> GitHub sayfasının sağ tarafında yer alan **[Releases](https://github.com/beratcemzengin/flashwire/releases)** bölümünden de tüm sürümlere ve arşiv paketlerine tek tıkla ulaşabilirsiniz.
 
 ---
 
@@ -37,17 +38,17 @@ Kurulum gerektirmez; dosyayı indirip doğrudan çalıştırabilirsiniz.
 Geleneksel VPN'ler tüm internet trafiğinizi yurt dışındaki uzak ve yavaş sunuculara yönlendirir; bu durum ping değerlerinizi 100-200 ms artırır ve internet hızınızı düşürür.
 
 **FlashWire ise bir VPN DEĞİLDİR:**
-- **Sıfır Ping ve Hız Kaybı:** Trafiğinizi harici bir sunucuya göndermez. Kendi bilgisayarınızda kernel seviyesinde (WinDivert sürücüsüyle) paket başlıklarını DPI sistemlerinin tanıyamayacağı şekilde anlık olarak desenkronize eder.
-- **Discord & Roblox Erişimi:** Discord masaüstü uygulamasını, ses kanallarını, ekran paylaşımlarını ve Roblox'u gecikmesiz açar.
+- **Sıfır Ping ve Hız Kaybı:** Trafiğinizi harici bir sunucuya göndermez. Kendi cihazınızda paket başlıklarını DPI sistemlerinin tanıyamayacağı şekilde anlık olarak desenkronize eder.
+- **Discord & Roblox Erişimi:** Discord masaüstü ve mobil uygulamasını, ses kanallarını, ekran paylaşımlarını ve Roblox'u gecikmesiz açar.
 - **Tüm Engelli Servisler:** Wattpad, Ekşi Sözlük, Instagram ve sansürlenen diğer siteleri pürüzsüz açar.
-- **AdGuard Güvenli DNS:** İSS tarafındaki DNS zehirleme (DNS hijacking) girişimlerini önler ve istenmeyen reklamları yerel olarak engeller.
-- **Tamamen Taşınabilir (Portable):** Sistem dosyalarına veya Registry'ye kalıntı bırakmaz. Gerekli tüm sürücüler exe'nin içinde gömülüdür.
+- **AdGuard Güvenli DNS:** İSS tarafındaki DNS zehirleme (DNS hijacking) girişimlerini önler ve istenmeyen reklamları engeller.
+- **Tamamen Taşınabilir (Portable):** Windows sürümünde kurulum gerekmez, Android sürümünde ise root gerektirmez.
 
 ---
 
-## 🎛️ Arayüz ve Buton Rehberi
+## 🎛️ Windows Arayüz ve Buton Rehberi
 
-Aşağıdaki rehber, FlashWire penceresindeki tüm butonların ve fonksiyonların ne işe yaradığını detaylandırmaktadır:
+Aşağıdaki şema, FlashWire PC penceresindeki tüm butonların ve fonksiyonların ne işe yaradığını detaylandırmaktadır:
 
 <div align="center">
   <img src="assets/preview.png" alt="FlashWire Arayüzü Detaylı Şema" width="320" />
@@ -109,21 +110,33 @@ Kullandığınız internet sağlayıcısının uyguladığı sansür yöntemine 
 
 ---
 
+## 🤖 Android Mobil Sürümü Hakkında
+
+- **Root Gerekmez:** Android'in yerel VPN API altyapısını kullanarak paketleri cihaz içinde yerel olarak filtreler.
+- **Mobil Veri (4.5G / 5G) Desteği:** Turkcell, Vodafone ve Türk Telekom mobil hatlarında ek ayara gerek kalmadan çalışır.
+- **Tasarım Uyumu:** PC sürümüyle birebir aynı Cyberpunk Altın ve Obsidian temasına sahiptir.
+- **Kurulum:** [release/FlashWire-v2.0-Android.apk](release/FlashWire-v2.0-Android.apk) dosyasını indirip telefonunuza kurmanız yeterlidir.
+
+---
+
 ## 🚀 Adım Adım Kullanım Kılavuzu
 
+### 🪟 Windows:
 1. **İndirin:** [release/FlashWire-v2.0-Windows-x64.zip](release/FlashWire-v2.0-Windows-x64.zip) arşivini indirin ve bir klasöre çıkartın.
 2. **Çalıştırın:** `FlashWire.exe` dosyasına çift tıklayın veya `Baslat.bat` dosyasını çalıştırın.
 3. **Yönetici İznini Onaylayın:**
    > [!IMPORTANT]  
    > FlashWire, ağ trafiğindeki sansürlü paketleri yerel sürücü seviyesinde çözmek için `WinDivert` filtre sürücüsünü kullanır. Bu nedenle açılışta çıkan Windows Yönetici İzni (UAC) uyarısına **"Evet"** demeniz gerekmektedir.
 4. **Bağlanın:** Sarı parlayan **`⚡ BAĞLAN`** butonuna basın.
-5. **Keyfini Çıkarın:** Discord'a girin, Roblox'u başlatın veya dilediğiniz internet sitesinde özgürce gezinin!
+
+### 🤖 Android:
+1. **İndirin:** [release/FlashWire-v2.0-Android.apk](release/FlashWire-v2.0-Android.apk) dosyasını indirin.
+2. **Kurun & Açın:** APK dosyasını açıp kurulumu tamamlayın.
+3. **Bağlanın:** Ortadaki **`⚡ BAĞLAN`** butonuna dokunun ve VPN bağlantı isteğini onaylayın.
 
 ---
 
-## 🛠️ Kaynak Koddan Derleme (Build from Source)
-
-Projeyi kendi bilgisayarınızda derlemek isterseniz:
+## 🛠️ Kaynak Koddan Derleme (Windows PC)
 
 ### Gereksinimler
 - Windows 10 / 11 (x64)
@@ -135,10 +148,9 @@ Depo kök dizinindeki `Derle.bat` dosyasını çalıştırmanız yeterlidir:
 ```cmd
 Derle.bat
 ```
-Derlenen çıktı dosyası doğrudan `bin\Release\FlashWire.exe` konumunda oluşturulacaktır.
 
 ### Release Paketi Hazırlama
-Tüm zip ve exe dosyalarını tek komutla oluşturmak için:
+Tüm zip, exe ve SHA256 dosyalarını tek komutla oluşturmak için:
 ```cmd
 Paketle.bat
 ```

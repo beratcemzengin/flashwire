@@ -43,9 +43,13 @@ KULLANIM: `
     if (Test-Path `$zipPath) { Remove-Item `$zipPath -Force }; `
     Compress-Archive -Path (Join-Path `$staging '*') -DestinationPath `$zipPath -Force; `
     Copy-Item `$binExe `$relExe -Force; `
+    `$apkSrc = Join-Path '%~dp0' 'FlashWire-2.0.apk'; `
+    if (Test-Path `$apkSrc) { Copy-Item `$apkSrc (Join-Path `$relDir 'FlashWire-v2.0-Android.apk') -Force }; `
     `$hZip = (Get-FileHash `$zipPath -Algorithm SHA256).Hash; `
     `$hExe = (Get-FileHash `$relExe -Algorithm SHA256).Hash; `
-    `$sha = \"`$hZip  FlashWire-v2.0-Windows-x64.zip`r`n`$hExe  FlashWire.exe\"; `
+    `$apkPath = Join-Path `$relDir 'FlashWire-v2.0-Android.apk'; `
+    `$hApk = if (Test-Path `$apkPath) { (Get-FileHash `$apkPath -Algorithm SHA256).Hash } else { '' }; `
+    `$sha = \"`$hZip  FlashWire-v2.0-Windows-x64.zip`r`n`$hExe  FlashWire.exe`r`n`$hApk  FlashWire-v2.0-Android.apk\"; `
     Set-Content -Path (Join-Path `$relDir 'SHA256SUMS.txt') -Value `$sha -Encoding UTF8; `
     Remove-Item `$staging -Recurse -Force; `
     Write-Host '[OK] Release dosyalari olusturuldu:' -ForegroundColor Green; `
@@ -54,7 +58,7 @@ KULLANIM: `
 
 echo.
 echo ==============================================
-echo  [BASARILI] Release zip ve exe hazir!
-echo  Konum: release\FlashWire-v2.0-Windows-x64.zip
+echo  [BASARILI] Release paketleri hazir!
+echo  Konum: release\
 echo ==============================================
 pause
