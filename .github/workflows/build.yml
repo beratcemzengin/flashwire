@@ -1,0 +1,37 @@
+name: Build FlashWire Release
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Build Solution
+      run: msbuild FlashWire.csproj /p:Configuration=Release /p:Platform=x64
+
+    - name: Package Release
+      shell: pwsh
+      run: |
+        $staging = New-Item -ItemType Directory -Path "$env:RUNNER_TEMP/FlashWire_Artifact" -Force
+        Copy-Item "bin/Release/FlashWire.exe" "$staging/FlashWire.exe" -Force
+        Copy-Item "Baslat.bat" "$staging/Baslat.bat" -Force
+        Compress-Archive -Path "$staging/*" -DestinationPath "$env:RUNNER_TEMP/FlashWire-v2.0-Windows-x64.zip" -Force
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: FlashWire-v2.0-Windows-x64
+        path: ${{ runner.temp }}/FlashWire-v2.0-Windows-x64.zip
