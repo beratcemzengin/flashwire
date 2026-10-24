@@ -18,18 +18,19 @@
 
 </div>
 
-## 📦 İndir (Releases)
+## 📦 İndir (GitHub Releases)
 
-Hem masaüstü bilgisayarınız (Windows) hem de cep telefonunuz (Android) için güncel sürümleri doğrudan indirebilirsiniz:
+Güncel sürümler doğrudan GitHub Releases üzerinden yayınlanmaktadır. Hem ana sayfadaki tablodan hem de sağ taraftaki **Releases** menüsünden her zaman en son sürüme ulaşabilirsiniz:
 
-| Platform | Dosya Adı | Açıklama | Boyut | İndirme Bağlantısı |
+| Platform | Dosya Adı | Açıklama | Boyut | Doğrudan İndirme (Latest Release) |
 | :---: | :--- | :--- | :---: | :---: |
-| 🪟 **Windows** | **`FlashWire-v2.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (.ZIP)](release/FlashWire-v2.0-Windows-x64.zip) |
-| 🪟 **Windows** | **`FlashWire.exe`** | Tek Dosya Bağımsız Portable Uygulama | ~2.0 MB | [⬇️ İndir (.EXE)](release/FlashWire.exe) |
-| 🤖 **Android** | **`FlashWire-v2.0-Android.apk`** | **Android Mobil Uygulama** (Telefon & Tablet) | ~3.5 MB | [⬇️ İndir (.APK)](release/FlashWire-v2.0-Android.apk) |
+| 🪟 **Windows** | **`FlashWire-v2.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (.ZIP)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v2.0-Windows-x64.zip) |
+| 🪟 **Windows** | **`FlashWire.exe`** | Tek Dosya Bağımsız Portable Uygulama | ~2.0 MB | [⬇️ İndir (.EXE)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire.exe) |
+| 🤖 **Android** | **`FlashWire-v2.0-Android.apk`** | **Android Mobil Uygulama** (Telefon & Tablet) | ~3.5 MB | [⬇️ İndir (.APK)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v2.0-Android.apk) |
 
 > [!TIP]  
-> GitHub sayfasının sağ tarafında yer alan **[Releases](https://github.com/beratcemzengin/flashwire/releases)** bölümünden de tüm sürümlere ve arşiv paketlerine tek tıkla ulaşabilirsiniz.
+> 🔗 **Tüm Sürümler ve Değişiklik Geçmişi (Changelog):**  
+> Sağ sütundaki veya bu bağlantıdaki **[🚀 GitHub Releases Sayfası](https://github.com/beratcemzengin/flashwire/releases)** üzerinden yayınlanan tüm geçmiş ve güncel versiyonlara, sürüm notlarına ve indirme dosyalarına tek tıkla ulaşabilirsiniz. Gelecekte yeni bir sürüm çıktığında bu bağlantılar otomatik olarak her zaman en güncel sürüme yönlendirir.
 
 ---
 
