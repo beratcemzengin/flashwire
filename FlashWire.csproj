@@ -25,6 +25,7 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.ServiceProcess" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

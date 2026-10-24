@@ -1,4 +1,4 @@
-# ⚡ FlashWire v3.0 - Multiplatform Release (Windows & Android)
+# ⚡ FlashWire v4.0 - Windows Service (services.msc) & Multiplatform Release
 
 > **Yüksek Hızlı DPI (Derin Paket İnceleme) ve DNS Engeli Aşma Kalkanı**  
 > Discord, Roblox, Wattpad ve tüm kısıtlı servislere sıfır ping ve hız kaybıyla tek tıkla bağlanın.
@@ -9,27 +9,23 @@
 
 | Platform | Dosya | Açıklama | Boyut | İndirme Bağlantısı |
 | :---: | :--- | :--- | :---: | :--- |
-| 🪟 **Windows** | **`FlashWire-v3.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (ZIP)](https://github.com/beratcemzengin/flashwire/releases/download/v3.0/FlashWire-v3.0-Windows-x64.zip) |
-| 🪟 **Windows** | **`FlashWire.exe`** | Bağımsız Tek Dosya Taşınabilir Program (Portable) | ~2.0 MB | [⬇️ İndir (EXE)](https://github.com/beratcemzengin/flashwire/releases/download/v3.0/FlashWire.exe) |
-| 🤖 **Android** | **`FlashWire-v3.0-Android.apk`** | **Android Mobil Sürüm** (Tüm Telefon & Tabletler) | ~3.5 MB | [⬇️ İndir (APK)](https://github.com/beratcemzengin/flashwire/releases/download/v3.0/FlashWire-v3.0-Android.apk) |
+| 🪟 **Windows** | **`FlashWire-v4.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (ZIP)](https://github.com/beratcemzengin/flashwire/releases/download/v4.0/FlashWire-v4.0-Windows-x64.zip) |
+| 🪟 **Windows** | **`FlashWire.exe`** | Bağımsız Tek Dosya Taşınabilir Program (Portable) | ~2.0 MB | [⬇️ İndir (EXE)](https://github.com/beratcemzengin/flashwire/releases/download/v4.0/FlashWire.exe) |
+| 🤖 **Android** | **`FlashWire-v4.0-Android.apk`** | **Android Mobil Sürüm** (Tüm Telefon & Tabletler) | ~3.5 MB | [⬇️ İndir (APK)](https://github.com/beratcemzengin/flashwire/releases/download/v4.0/FlashWire-v4.0-Android.apk) |
 
 ---
 
-### 🚀 v3.0 Sürüm Yenilikleri
+### 🚀 v4.0 Sürüm Yenilikleri
 
-- 🟠 **Özel Superonline Profili Eklendi:**
+- ⚙️ **Gerçek Windows Hizmeti (`services.msc`) Mimarisi:**
+  - Ayarlar menüsüne entegre edilen **"7/24 Windows Hizmeti Kur"** butonuyla FlashWire'ı tek tıkla Windows'un resmi arka plan servislerine (`FlashWireService`) dahil edebilirsiniz.
+  - **Oturum Açılmasa Bile Otomatik Başlatma:** Bilgisayar her açıldığında FlashWire otomatik olarak arka planda devreye girer. Programı açmanıza veya her seferinde "Bağlan" demenize gerek kalmaz.
+  - **Kalıcı 7/24 Koruma:** GUI penceresini kapatsanız dahi Windows Hizmeti ve AdGuard DNS kalkanı arka planda kesintisiz çalışmayı sürdürür.
+  - **Tek Tıkla Kaldırma:** Dilediğiniz an Ayarlar menüsünden **"Hizmeti Kaldır"** butonuna basarak servisi tamamen silebilir ve normal taşınabilir moda dönebilirsiniz.
+- 🇹🇷 **Özel Superonline & Türkiye Operatör Profilleri:**
   - Hem Windows PC hem de Android mobil sürümlerine bağımsız **`Superonline (Fiber & VDSL)`** profili entegre edildi.
-  - Turkcell Mobil ile Superonline Fiber ayrıştırılarak Superonline omurgasındaki özel SNI/DPI kısıtlamaları için en uygun paket bölme ve desenkronizasyon parametreleri uygulandı.
-- 🇹🇷 **Güncellenen Operatör Profilleri:**
-  - `⚡ Otomatik (Tüm Siteler & Discord)`
-  - `🔴 Turkcell (Mobil Veri)`
-  - `🟠 Superonline (Fiber & VDSL)` *(YENİ)*
-  - `🟣 Vodafone (Fiber & Redbox / Mobil)`
-  - `🔵 Türk Telekom (TTNet & Mobil)`
-  - `🟡 TurkNet (GigaFiber & VDSL)`
-  - `🟢 Türksat Kablonet`
-  - `🌐 Evrensel Mod (GoodbyeDPI)`
-- 🎨 **Obsidian & Cyberpunk Gold Tasarımı v3:** Arayüz başlık ve rozetleri v3.0 standardına yükseltildi.
+  - Superonline, Turkcell, Vodafone, Türk Telekom, TurkNet ve Kablonet için optimize edilmiş paket bölme (desync/multisplit) ayarları.
+- 🎨 **Obsidian & Cyberpunk Gold Tasarımı v4.0:** Arayüz başlık, rozet ve servis yönetimi bileşenleri v4.0 standardına yükseltildi.
 - 🚀 **Canlı Ağ & Site Teşhis Paneli:** Discord, Roblox, Wattpad, Ekşi Sözlük, Instagram ve YouTube için milisaniye cinsinden gecikme ve erişim testi.
 - 🛡️ **Entegre AdGuard DNS Kalkanı:** DNS zehirlenmelerini ve reklamları engelleyen otomatik koruma.
 
@@ -38,9 +34,9 @@
 ### 🔒 Güvenlik & Dosya Doğrulama (SHA-256)
 
 ```text
-FlashWire-v3.0-Windows-x64.zip : 9435B354D868CF09C0839155140B29C1DA0BE7ECFBE362672B7BEEE574201D15
-FlashWire.exe                  : 70677775DC9B22B8BE17472BACDE42F7A291F64882D541085BCB9F7894B4054E
-FlashWire-v3.0-Android.apk     : 5773185474770C089D7507D865E935CB834B715525AE60BF71398745A249499E
+FlashWire-v4.0-Windows-x64.zip : DB301DC13B4D9F039E0A61E9250B353F7A70B2FB68EA5E79FECCE941716BF012
+FlashWire.exe                  : F5244E6FA1A77D99E72FFEF466DA8D7C494F5AB1C1243DF620E92D20EC06CF7A
+FlashWire-v4.0-Android.apk     : FB06561BC6A60CF702A3177F317B2058C6B2658D740B79A012B5A6FE53934954
 ```
 
 > 🛡️ **Windows SmartScreen Uyarısı Hakkında:**  
@@ -53,9 +49,9 @@ FlashWire-v3.0-Android.apk     : 5773185474770C089D7507D865E935CB834B715525AE60B
 #### Windows:
 1. `FlashWire.exe` dosyasını çalıştırın (SmartScreen uyarısında *Ek bilgi* -> *Yine de çalıştır* deyin).
 2. Windows UAC Yönetici iznine **Evet** deyin.
-3. Operatör menüsünden sağlayıcınızı seçin (örn: `Superonline` veya `Otomatik`).
-4. **⚡ BAĞLAN** butonuna tıklayın.
+3. **Manuel Mod:** Operatörünüzü seçip **⚡ BAĞLAN** butonuna tıklayın.
+4. **7/24 Otomatik Servis Modu (Önerilen):** Sağ üstteki **⚙ Ayarlar** çarkına tıklayın ve **"7/24 Windows Hizmeti Kur"** butonuna basın. Artık Windows her başladığında kalkanınız otomatik çalışır!
 
 #### Android:
-1. `FlashWire-v3.0-Android.apk` dosyasını telefonunuza indirin ve kurun.
+1. `FlashWire-v4.0-Android.apk` dosyasını telefonunuza indirin ve kurun.
 2. Açıp profilinizi seçin ve **⚡ BAĞLAN** butonuna dokunun (VPN iznini onaylayın).

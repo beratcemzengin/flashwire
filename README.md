@@ -1,14 +1,14 @@
 <div align="center">
 
-# ⚡ FlashWire v3.0
+# ⚡ FlashWire v4.0
 ### Windows & Android İçin Yüksek Hızlı DPI ve DNS Engeli Aşma Kalkanı
 
 <p align="center">
-  <img src="assets/preview.png" alt="FlashWire v3.0 Arayüzü" width="340" style="border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+  <img src="assets/preview.png" alt="FlashWire v4.0 Arayüzü" width="340" style="border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
 </p>
 
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Android-blue.svg?style=for-the-badge&logo=windows)](https://github.com/beratcemzengin/flashwire)
-[![Version](https://img.shields.io/badge/Versiyon-v3.0-FFB800.svg?style=for-the-badge&logo=speedtest)](https://github.com/beratcemzengin/flashwire/releases)
+[![Version](https://img.shields.io/badge/Versiyon-v4.0-FFB800.svg?style=for-the-badge&logo=speedtest)](https://github.com/beratcemzengin/flashwire/releases)
 [![License](https://img.shields.io/badge/Lisans-MIT-green.svg?style=for-the-badge)](LICENSE)
 [![Zero Ping Loss](https://img.shields.io/badge/Ping%20Kaybı-%C2%B10%20ms%20(VPN%20Değil)-success.svg?style=for-the-badge)](#-flashwire-nedir-ve-neler-yapabilir)
 
@@ -24,9 +24,9 @@ Güncel sürümler doğrudan GitHub Releases üzerinden yayınlanmaktadır. Hem 
 
 | Platform | Dosya Adı | Açıklama | Boyut | Doğrudan İndirme (Latest Release) |
 | :---: | :--- | :--- | :---: | :---: |
-| 🪟 **Windows** | **`FlashWire-v3.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (.ZIP)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v3.0-Windows-x64.zip) |
+| 🪟 **Windows** | **`FlashWire-v4.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (.ZIP)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v4.0-Windows-x64.zip) |
 | 🪟 **Windows** | **`FlashWire.exe`** | Tek Dosya Bağımsız Portable Uygulama | ~2.0 MB | [⬇️ İndir (.EXE)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire.exe) |
-| 🤖 **Android** | **`FlashWire-v3.0-Android.apk`** | **Android Mobil Uygulama** (Telefon & Tablet) | ~3.5 MB | [⬇️ İndir (.APK)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v3.0-Android.apk) |
+| 🤖 **Android** | **`FlashWire-v4.0-Android.apk`** | **Android Mobil Uygulama** (Telefon & Tablet) | ~3.5 MB | [⬇️ İndir (.APK)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v4.0-Android.apk) |
 
 > [!TIP]  
 > 🔗 **Tüm Sürümler ve Değişiklik Geçmişi (Changelog):**  
@@ -40,14 +40,29 @@ Geleneksel VPN'ler tüm internet trafiğinizi yurt dışındaki uzak ve yavaş s
 
 **FlashWire ise bir VPN DEĞİLDİR:**
 - **Sıfır Ping ve Hız Kaybı:** Trafiğinizi harici bir sunucuya göndermez. Kendi cihazınızda paket başlıklarını DPI sistemlerinin tanıyamayacağı şekilde anlık olarak desenkronize eder.
+- **⚙️ 7/24 Windows Hizmeti (v4.0 YENİLİK):** Windows servislerine (`services.msc`) tek tıkla entegre olur. PC açıldığında oturum açılmasa bile arka planda otomatik çalışır!
 - **Discord & Roblox Erişimi:** Discord masaüstü ve mobil uygulamasını, ses kanallarını, ekran paylaşımlarını ve Roblox'u gecikmesiz açar.
 - **Tüm Engelli Servisler:** Wattpad, Ekşi Sözlük, Instagram ve sansürlenen diğer siteleri pürüzsüz açar.
 - **AdGuard Güvenli DNS:** İSS tarafındaki DNS zehirleme (DNS hijacking) girişimlerini önler ve istenmeyen reklamları engeller.
-- **Tamamen Taşınabilir (Portable):** Windows sürümünde kurulum gerekmez, Android sürümünde ise root gerekmez.
+- **Tamamen Taşınabilir (Portable):** Windows sürümünde kurulum zorunluluğu yoktur (ister portable ister servis olarak çalıştırın), Android sürümünde ise root gerekmez.
 
 ---
 
-## 🎛️ Operatör & Profil Seçici (v3.0 İle Superonline Eklendi!)
+## ⚙️ v4.0 Windows Hizmeti (services.msc) Mimarisi
+
+FlashWire v4.0 ile artık her bilgisayarı açtığınızda programı manuel olarak başlatmak zorunda değilsiniz:
+
+1. **Ayarlar (⚙)** çarkına tıklayın.
+2. Açılan panelde **"7/24 Windows Hizmeti Olarak Kur"** butonuna basın.
+3. FlashWire, sistem motorunu `%ProgramData%\FlashWire\engine` klasörüne yerleştirir ve Windows Hizmet Yöneticisi'ne (`FlashWireService`) kaydeder.
+4. **Sonuç:**
+   - Bilgisayarınız her yeniden başladığında, siz oturum açmasanız dahi FlashWire arka planda 7/24 çalışır.
+   - FlashWire arayüzünü (GUI) kapatsanız bile koruma asla kesilmez.
+   - İstediğiniz zaman aynı menüden **"Hizmeti Kaldır"** butonuna basarak sistemi ilk haline getirebilirsiniz.
+
+---
+
+## 🎛️ Operatör & Profil Seçici
 
 Kullandığınız internet sağlayıcısının uyguladığı sansür yöntemine en uygun bypass profilini seçebilirsiniz:
 
@@ -71,14 +86,14 @@ Kullandığınız internet sağlayıcısının uyguladığı sansür yöntemine 
 </div>
 
 ### 1. Üst Başlık Çubuğu (Header Bar)
-- **⚡ FlashWire Logosu & `v3.0` Rozeti:** Uygulamanın güncel sürüm durumunu simgeler.
+- **⚡ FlashWire Logosu & `v4.0` Rozeti:** Uygulamanın güncel sürüm durumunu simgeler.
 - **🚀 Roket Butonu (Canlı Ağ & Site Teşhisi):**
   - Tıklandığında pencerenin alt kısmında **Canlı Teşhis Çekmecesi** açılır.
   - Tek tıkla **Discord, Roblox, Wattpad, Ekşi Sözlük, Instagram ve YouTube** sunucularına test istekleri gönderir.
   - Sitelerin açık olup olmadığını ve gerçek tepki sürelerini (örn: `✔ 42 ms` veya `✖ Engelli`) listeler.
-- **⚙ Çark Butonu (Operatör Ayarları):** Operatör seçim kartını gizleyip açmanızı sağlar.
+- **⚙ Çark Butonu (Operatör & Servis Ayarları):** Operatör seçim kartını ve **7/24 Windows Servisi Kur/Kaldır** panelini gizleyip açmanızı sağlar.
 - **— Çizgi Butonu (Küçült):** Pencereyi görev çubuğuna ve sistem tepsisine (Tray) gizler.
-- **✕ Kapat Butonu:** DPI korumasını güvenli şekilde durdurur, DNS ayarlarınızı otomatik eski haline döndürür ve kapatır.
+- **✕ Kapat Butonu:** Manuel moddaysanız DPI korumasını durdurup DNS'i sıfırlar; Servis modundaysanız pencereyi kapatır fakat hizmet arka planda 7/24 kesintisiz çalışmayı sürdürür.
 
 ### 2. Durum Rozeti & Halo Ekranı
 - **`● ○ GÜVENLİK DEVRE DIŞI` / `● FLASHWIRE KORUMASI AKTİF` Rozeti:** Kalkanın anlık durumunu dinamik rozetle bildirir.
@@ -90,19 +105,19 @@ Kullandığınız internet sağlayıcısının uyguladığı sansür yöntemine 
 
 ---
 
-## 🤖 Android Mobil Sürümü (v3.0)
+## 🤖 Android Mobil Sürümü (v4.0)
 
 - **Root Gerekmez:** Android yerel VPN servisi üzerinden cihaz içinde yerel filtreleme yapar.
 - **Mobil Veri (4.5G / 5G) & Wi-Fi:** Superonline, Turkcell, Vodafone ve Türk Telekom hatlarında tam uyumludur.
 - **Tasarım:** PC sürümüyle birebir aynı Cyberpunk Altın ve Obsidian teması.
-- **Kurulum:** [release/FlashWire-v3.0-Android.apk](release/FlashWire-v3.0-Android.apk) dosyasını indirip telefonunuza kurmanız yeterlidir.
+- **Kurulum:** [release/FlashWire-v4.0-Android.apk](release/FlashWire-v4.0-Android.apk) dosyasını indirip telefonunuza kurmanız yeterlidir.
 
 ---
 
 ## 🚀 Adım Adım Kullanım Kılavuzu
 
 ### 🪟 Windows:
-1. **İndirin:** [release/FlashWire-v3.0-Windows-x64.zip](release/FlashWire-v3.0-Windows-x64.zip) arşivini indirin ve bir klasöre çıkartın.
+1. **İndirin:** [release/FlashWire-v4.0-Windows-x64.zip](release/FlashWire-v4.0-Windows-x64.zip) arşivini indirin ve bir klasöre çıkartın.
 2. **Çalıştırın:** `FlashWire.exe` dosyasına çift tıklayın veya `Baslat.bat` dosyasını çalıştırın.
 3. **SmartScreen Uyarısı Çıkarsa:**
    > [!NOTE]  
@@ -112,10 +127,10 @@ Kullandığınız internet sağlayıcısının uyguladığı sansür yöntemine 
    > 1. Ekranda yer alan **"Ek bilgi"** *(More info)* bağlantısına tıklayın.  
    > 2. Altta beliren **"Yine de çalıştır"** *(Run anyway)* butonuna basın.
 4. **Yönetici İznini Onaylayın:** WinDivert çekirdek sürücüsü için açılışta çıkan Windows Yönetici İzni (UAC) uyarısına **"Evet"** deyin.
-5. **Bağlanın:** Sağlayıcınızı seçin (örn: `Superonline`) ve **`⚡ BAĞLAN`** butonuna basın.
+5. **Bağlanın:** Sağlayıcınızı seçin (örn: `Superonline`) ve **`⚡ BAĞLAN`** butonuna basın veya Ayarlar (⚙) menüsünden **7/24 Servis Kur** butonuna tıklayın.
 
 ### 🤖 Android:
-1. **İndirin:** [release/FlashWire-v3.0-Android.apk](release/FlashWire-v3.0-Android.apk) dosyasını indirin.
+1. **İndirin:** [release/FlashWire-v4.0-Android.apk](release/FlashWire-v4.0-Android.apk) dosyasını indirin.
 2. **Kurun & Açın:** APK dosyasını açıp kurulumu tamamlayın.
 3. **Bağlanın:** Profilinizi seçip ortadaki **`⚡ BAĞLAN`** butonuna dokunun.
 
@@ -139,6 +154,9 @@ Paketle.bat
 **S: Windows SmartScreen uyarısı neden çıkıyor? Dosya güvenli mi?**  
 **C:** FlashWire tamamen açık kaynaklıdır; tüm kaynak kodları bu depoda halka açıktır ve hiçbir kullanıcı verisi toplamaz. Microsoft SmartScreen, yıllık yüksek ücretler ödenerek satın alınan ticari EV sertifikalarına sahip olmayan bağımsız açık kaynak yazılımlarda bu uyarıyı verir. Ayrıca yerel paket desenkronizasyonu için kullanılan açık kaynaklı `WinDivert` sürücüsü bazı antivirüslerce yanlış pozitif (false positive) olarak etiketlenebilir. "Ek bilgi" ➔ "Yine de çalıştır" diyerek güvenle kullanabilirsiniz.
 
+**S: 7/24 Windows Hizmeti nasıl çalışır?**  
+**C:** FlashWire Ayarlar menüsünden servisi kurduğunuzda, `goodbyedpi.exe` Windows'un resmi Hizmet Yöneticisi'ne (`FlashWireService`) kaydedilir. Bilgisayar açıldığı andan itibaren arka planda çalışarak internetinizi sürekli korur.
+
 **S: FlashWire oyunlarda pingimi artırır mı?**  
 **C:** Kesinlikle hayır. FlashWire bir VPN değildir. Trafiğiniz yurt dışı sunuculara yönlendirilmez; internet servis sağlayıcınızın sağladığı orijinal hız ve ping değerleri korunur.
 
@@ -146,7 +164,7 @@ Paketle.bat
 **C:** Evet, Discord ses ve görüntü protokolleri (WebRTC/UDP) için gerekli kurallar profillerin içerisine entegre edilmiştir.
 
 **S: Programı kapattığımda internet ayarlarım bozulur mu?**  
-**C:** Hayır. FlashWire kapatıldığında uyguladığı geçici AdGuard DNS adreslerini otomatik temizler ve ağ adaptörünüzü varsayılan ayarlarına geri döndürür.
+**C:** Hayır. Manuel modda FlashWire kapatıldığında DNS ayarlarınız varsayılana döner. Servis modunda ise 7/24 kesintisiz koruma devam eder.
 
 ---
 
@@ -157,5 +175,5 @@ Bu proje **MIT Lisansı** altında özgür bir açık kaynak yazılım olarak pa
 ---
 
 <div align="center">
-  <sub>Geliştirici: <b>beratcemzengin</b> • ⚡ FlashWire v3.0</sub>
+  <sub>Geliştirici: <b>beratcemzengin</b> • ⚡ FlashWire v4.0</sub>
 </div>

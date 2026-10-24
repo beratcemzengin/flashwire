@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 
 [assembly: AssemblyTitle("FlashWire")]
-[assembly: AssemblyDescription("FlashWire v3.0 - High-Speed DPI & DNS Shield for Windows")]
+[assembly: AssemblyDescription("FlashWire v4.0 - High-Speed DPI & DNS Shield for Windows")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("FlashWire Open Source")]
 [assembly: AssemblyProduct("FlashWire")]
@@ -17,5 +17,5 @@ using System.Windows;
     ResourceDictionaryLocation.SourceAssembly
 )]
 
-[assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.0.0")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.0.0")]

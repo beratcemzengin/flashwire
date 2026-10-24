@@ -11,11 +11,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Forms;
 using System.IO.Compression;
 using System.Text;
+using System.ServiceProcess;
 
 namespace FlashWire
 {
     public partial class MainWindow : Window
     {
+        private const string SERVICE_NAME = "FlashWireService";
         private Process _engineProcess;
         private bool _isConnected = false;
         private bool _isDnsChanged = false;
@@ -38,7 +40,10 @@ namespace FlashWire
             InitializeComponent();
             SetupTrayIcon();
             this.Closing += MainWindow_Closing;
-            this.Loaded += (s, e) => Task.Run(() => GetEngineDirectory());
+            this.Loaded += (s, e) => {
+                Task.Run(() => GetEngineDirectory());
+                Dispatcher.Invoke(() => UpdateServiceStatusUI());
+            };
         }
 
         private void SetupTrayIcon()
@@ -46,7 +51,7 @@ namespace FlashWire
             try
             {
                 _notifyIcon = new NotifyIcon();
-                _notifyIcon.Text = "FlashWire v3.0 - DPI & DNS Kalkanı";
+                _notifyIcon.Text = "FlashWire v4.0 - DPI & DNS Kalkanı";
                 try
                 {
                     var iconUri = new Uri("pack://application:,,,/app.ico");
@@ -135,6 +140,10 @@ namespace FlashWire
             panelSettings.Visibility = panelSettings.Visibility == Visibility.Visible 
                 ? Visibility.Collapsed 
                 : Visibility.Visible;
+            if (panelSettings.Visibility == Visibility.Visible)
+            {
+                UpdateServiceStatusUI();
+            }
         }
 
         private void BtnHeaderTest_Click(object sender, RoutedEventArgs e)
@@ -271,6 +280,235 @@ namespace FlashWire
             }
         }
 
+        private bool IsServiceInstalled()
+        {
+            try
+            {
+                using (var sc = new ServiceController(SERVICE_NAME))
+                {
+                    var status = sc.Status;
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool IsServiceRunning()
+        {
+            try
+            {
+                using (var sc = new ServiceController(SERVICE_NAME))
+                {
+                    return sc.Status == ServiceControllerStatus.Running;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void UpdateServiceStatusUI()
+        {
+            try
+            {
+                bool installed = IsServiceInstalled();
+                bool running = installed && IsServiceRunning();
+
+                if (running)
+                {
+                    txtServiceStatus.Text = "● 7/24 AKTİF";
+                    txtServiceStatus.Foreground = _goldBrush;
+                    btnServiceToggle.Content = "✕ Servisi Durdur ve Kaldır";
+                    btnServiceToggle.Foreground = _redBrush;
+
+                    _isConnected = true;
+                    SetServiceActiveUI();
+                }
+                else if (installed)
+                {
+                    txtServiceStatus.Text = "○ DURDURULDU";
+                    txtServiceStatus.Foreground = _slateBrush;
+                    btnServiceToggle.Content = "✕ Servisi Kaldır";
+                    btnServiceToggle.Foreground = _redBrush;
+                }
+                else
+                {
+                    txtServiceStatus.Text = "○ Kurulu Değil";
+                    txtServiceStatus.Foreground = _slateBrush;
+                    btnServiceToggle.Content = "⚡ Servisi Kur (7/24 Otomatik Başlat)";
+                    btnServiceToggle.Foreground = _goldBrush;
+                }
+            }
+            catch { }
+        }
+
+        private void SetServiceActiveUI()
+        {
+            txtStatus.Text = "● FLASHWIRE SERVİSİ AKTİF";
+            txtStatus.Foreground = _goldBrush;
+            dotStatus.Fill = _goldBrush;
+            badgeStatus.Background = _badgeGoldBg;
+            badgeStatus.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#423512"));
+            txtSubStatus.Text = "Windows Hizmeti (services.msc) 7/24 devrede";
+
+            orbDropShadow.Color = (Color)ColorConverter.ConvertFromString("#FFB800");
+            orbDropShadow.Opacity = 0.75;
+            orbDropShadow.BlurRadius = 32;
+            orbBorder.BorderBrush = _goldBrush;
+
+            try
+            {
+                imgCenterLogo.Source = new BitmapImage(new Uri("pack://application:,,,/flashwire_gold.png"));
+            }
+            catch { }
+
+            var redGradient = new LinearGradientBrush();
+            redGradient.StartPoint = new Point(0, 0);
+            redGradient.EndPoint = new Point(1, 0);
+            redGradient.GradientStops.Add(new GradientStop((Color)ColorConverter.ConvertFromString("#EF4444"), 0));
+            redGradient.GradientStops.Add(new GradientStop((Color)ColorConverter.ConvertFromString("#DC2626"), 1));
+
+            btnConnectToggle.Background = redGradient;
+            btnShadow.Color = (Color)ColorConverter.ConvertFromString("#EF4444");
+            btnConnectText.Text = "SERVİSİ DURDUR";
+            btnConnectText.Foreground = Brushes.White;
+            btnIconPath.Fill = Brushes.White;
+            btnIconPath.Data = Geometry.Parse("M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z");
+        }
+
+        private async void BtnServiceToggle_Click(object sender, RoutedEventArgs e)
+        {
+            btnServiceToggle.IsEnabled = false;
+
+            try
+            {
+                if (IsServiceInstalled())
+                {
+                    // Uninstall service
+                    btnServiceToggle.Content = "Kaldırılıyor...";
+                    await Task.Run(() =>
+                    {
+                        RunHiddenCmd("sc.exe stop " + SERVICE_NAME + " >nul 2>&1");
+                        System.Threading.Thread.Sleep(500);
+                        RunHiddenCmd("sc.exe delete " + SERVICE_NAME + " >nul 2>&1");
+                        ResetSystemDns();
+                        KillStaleProcesses();
+                        FlushDns();
+                    });
+
+                    _isConnected = false;
+                    SetDisconnectedUI();
+                    UpdateServiceStatusUI();
+
+                    System.Windows.MessageBox.Show(
+                        "FlashWire Windows Hizmeti başarıyla kaldırıldı.",
+                        "FlashWire v4.0",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
+                else
+                {
+                    // Install service
+                    btnServiceToggle.Content = "Servis Kuruluyor...";
+                    bool ok = await Task.Run(() =>
+                    {
+                        try
+                        {
+                            KillStaleProcesses();
+
+                            // Use ProgramData for permanent system service path
+                            string programDataDir = Path.Combine(
+                                Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
+                                "FlashWire",
+                                "engine");
+
+                            if (!Directory.Exists(programDataDir))
+                            {
+                                Directory.CreateDirectory(programDataDir);
+                            }
+
+                            string localEngine = GetEngineDirectory();
+                            string gbdSrc = Path.Combine(localEngine, "goodbyedpi");
+                            string gbdDst = Path.Combine(programDataDir, "goodbyedpi");
+
+                            if (Directory.Exists(gbdSrc))
+                            {
+                                if (!Directory.Exists(gbdDst)) Directory.CreateDirectory(gbdDst);
+                                foreach (var f in Directory.GetFiles(gbdSrc))
+                                {
+                                    File.Copy(f, Path.Combine(gbdDst, Path.GetFileName(f)), true);
+                                }
+                            }
+
+                            string serviceExe = Path.Combine(gbdDst, "goodbyedpi.exe");
+                            if (!File.Exists(serviceExe))
+                            {
+                                return false;
+                            }
+
+                            string binPath = string.Format(
+                                "\"{0}\" -5 --dns-addr 94.140.14.14 --dns-port 53 --dnsv6-addr 2a10:50c0::ad1:ff --dnsv6-port 53",
+                                serviceExe);
+
+                            // Stop previous if any
+                            RunHiddenCmd("sc.exe stop " + SERVICE_NAME + " >nul 2>&1");
+                            RunHiddenCmd("sc.exe delete " + SERVICE_NAME + " >nul 2>&1");
+                            System.Threading.Thread.Sleep(500);
+
+                            // Create auto-start service
+                            string createCmd = string.Format(
+                                "sc.exe create {0} binPath= \"{1}\" start= auto DisplayName= \"FlashWire DPI Shield\"",
+                                SERVICE_NAME,
+                                binPath);
+                            RunHiddenCmd(createCmd);
+
+                            RunHiddenCmd("sc.exe description " + SERVICE_NAME + " \"FlashWire v4.0 - 7/24 Arka Plan DPI ve DNS Kalkanı Hizmeti\"");
+                            RunHiddenCmd("sc.exe start " + SERVICE_NAME);
+
+                            SetSystemDnsToAdGuard();
+                            FlushDns();
+                            return true;
+                        }
+                        catch
+                        {
+                            return false;
+                        }
+                    });
+
+                    if (ok)
+                    {
+                        UpdateServiceStatusUI();
+                        System.Windows.MessageBox.Show(
+                            "FlashWire başarıyla Windows Hizmeti (services.msc) olarak kuruldu!\n\nArtık Windows her açıldığında arka planda kendiliğinden başlayacak ve koruma 7/24 aktif kalacaktır.",
+                            "FlashWire v4.0 - Hizmet Kuruldu",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        UpdateServiceStatusUI();
+                        System.Windows.MessageBox.Show(
+                            "Servis kurulumu başarısız oldu. Lütfen uygulamayı 'Yönetici Olarak Çalıştır' seçeneğiyle açtığınızdan emin olun.",
+                            "Hata",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                btnServiceToggle.IsEnabled = true;
+            }
+        }
+
         private async void BtnConnectToggle_Click(object sender, RoutedEventArgs e)
         {
             await ToggleConnectionAsync();
@@ -282,6 +520,11 @@ namespace FlashWire
 
             try
             {
+                if (IsServiceRunning())
+                {
+                    BtnServiceToggle_Click(null, null);
+                    return;
+                }
                 if (!_isConnected)
                 {
                     // Start connecting
@@ -556,8 +799,14 @@ namespace FlashWire
             catch { }
         }
 
-        private void CleanupEngine()
+        private void CleanupEngine(bool forceAll = false)
         {
+            if (IsServiceRunning() && !forceAll)
+            {
+                // Keep 24/7 Windows Service running even when GUI is closed!
+                return;
+            }
+
             try
             {
                 if (_engineProcess != null && !_engineProcess.HasExited)

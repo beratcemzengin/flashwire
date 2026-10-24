@@ -1,5 +1,5 @@
 @echo off
-title FlashWire v2.0 Başlatılıyor...
+title FlashWire v4.0 Başlatılıyor...
 if exist "%~dp0FlashWire.exe" (
     start "" "%~dp0FlashWire.exe"
     exit
