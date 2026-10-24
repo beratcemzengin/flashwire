@@ -104,8 +104,15 @@ Kullandığınız internet sağlayıcısının uyguladığı sansür yöntemine 
 ### 🪟 Windows:
 1. **İndirin:** [release/FlashWire-v3.0-Windows-x64.zip](release/FlashWire-v3.0-Windows-x64.zip) arşivini indirin ve bir klasöre çıkartın.
 2. **Çalıştırın:** `FlashWire.exe` dosyasına çift tıklayın veya `Baslat.bat` dosyasını çalıştırın.
-3. **Yönetici İznini Onaylayın:** WinDivert çekirdek sürücüsü için açılışta çıkan Windows Yönetici İzni (UAC) uyarısına **"Evet"** deyin.
-4. **Bağlanın:** Sağlayıcınızı seçin (örn: `Superonline`) ve **`⚡ BAĞLAN`** butonuna basın.
+3. **SmartScreen Uyarısı Çıkarsa:**
+   > [!NOTE]  
+   > **🛡️ Windows Defender SmartScreen ("Kişisel Bilgisayarınızı Korudu") Uyarısı Hakkında:**  
+   > FlashWire tamamen açık kaynaklı, bağımsız ve güvenli bir yazılımdır. Windows, ticari ve ücretli kurumsal kod imzalama sertifikası satın almayan açık kaynaklı yeni geliştirici araçlarında bu standart itibar uyarısını gösterir.  
+   > Bu ekran çıktığında çalıştırmak için:  
+   > 1. Ekranda yer alan **"Ek bilgi"** *(More info)* bağlantısına tıklayın.  
+   > 2. Altta beliren **"Yine de çalıştır"** *(Run anyway)* butonuna basın.
+4. **Yönetici İznini Onaylayın:** WinDivert çekirdek sürücüsü için açılışta çıkan Windows Yönetici İzni (UAC) uyarısına **"Evet"** deyin.
+5. **Bağlanın:** Sağlayıcınızı seçin (örn: `Superonline`) ve **`⚡ BAĞLAN`** butonuna basın.
 
 ### 🤖 Android:
 1. **İndirin:** [release/FlashWire-v3.0-Android.apk](release/FlashWire-v3.0-Android.apk) dosyasını indirin.
@@ -128,6 +135,9 @@ Paketle.bat
 ---
 
 ## ❓ Sıkça Sorulan Sorular (SSS)
+
+**S: Windows SmartScreen uyarısı neden çıkıyor? Dosya güvenli mi?**  
+**C:** FlashWire tamamen açık kaynaklıdır; tüm kaynak kodları bu depoda halka açıktır ve hiçbir kullanıcı verisi toplamaz. Microsoft SmartScreen, yıllık yüksek ücretler ödenerek satın alınan ticari EV sertifikalarına sahip olmayan bağımsız açık kaynak yazılımlarda bu uyarıyı verir. Ayrıca yerel paket desenkronizasyonu için kullanılan açık kaynaklı `WinDivert` sürücüsü bazı antivirüslerce yanlış pozitif (false positive) olarak etiketlenebilir. "Ek bilgi" ➔ "Yine de çalıştır" diyerek güvenle kullanabilirsiniz.
 
 **S: FlashWire oyunlarda pingimi artırır mı?**  
 **C:** Kesinlikle hayır. FlashWire bir VPN değildir. Trafiğiniz yurt dışı sunuculara yönlendirilmez; internet servis sağlayıcınızın sağladığı orijinal hız ve ping değerleri korunur.

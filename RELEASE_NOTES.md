@@ -38,17 +38,20 @@
 ### 🔒 Güvenlik & Dosya Doğrulama (SHA-256)
 
 ```text
-FlashWire-v3.0-Windows-x64.zip : 835002498BBA49E5D3978FF14FCD30A41644033574286BD29ED39CAA5A048B08
-FlashWire.exe                  : DDC519DB86A1ADE5F28148F0ACE4822D1C77B64A2AF411007AB431BEFF25DA16
+FlashWire-v3.0-Windows-x64.zip : 9435B354D868CF09C0839155140B29C1DA0BE7ECFBE362672B7BEEE574201D15
+FlashWire.exe                  : 70677775DC9B22B8BE17472BACDE42F7A291F64882D541085BCB9F7894B4054E
 FlashWire-v3.0-Android.apk     : 5773185474770C089D7507D865E935CB834B715525AE60BF71398745A249499E
 ```
+
+> 🛡️ **Windows SmartScreen Uyarısı Hakkında:**  
+> Windows ilk çalıştırmada "Kişisel bilgisayarınızı korudu" ekranı açarsa, **"Ek bilgi"** -> **"Yine de çalıştır"** butonuna basarak açabilirsiniz. Program açık kaynaklı ve güvenlidir.
 
 ---
 
 ### 💡 Hızlı Kullanım
 
 #### Windows:
-1. `FlashWire.exe` dosyasını çalıştırın.
+1. `FlashWire.exe` dosyasını çalıştırın (SmartScreen uyarısında *Ek bilgi* -> *Yine de çalıştır* deyin).
 2. Windows UAC Yönetici iznine **Evet** deyin.
 3. Operatör menüsünden sağlayıcınızı seçin (örn: `Superonline` veya `Otomatik`).
 4. **⚡ BAĞLAN** butonuna tıklayın.
