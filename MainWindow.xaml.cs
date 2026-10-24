@@ -46,7 +46,7 @@ namespace FlashWire
             try
             {
                 _notifyIcon = new NotifyIcon();
-                _notifyIcon.Text = "FlashWire v2.0 - DPI & DNS Kalkanı";
+                _notifyIcon.Text = "FlashWire v3.0 - DPI & DNS Kalkanı";
                 try
                 {
                     var iconUri = new Uri("pack://application:,,,/app.ico");
@@ -193,7 +193,7 @@ namespace FlashWire
                     request.Timeout = 3500;
                     request.ReadWriteTimeout = 3500;
                     request.Method = "HEAD";
-                    request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) FlashWire/2.0";
+                    request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) FlashWire/3.0";
                     request.AllowAutoRedirect = true;
                     using (System.Net.HttpWebResponse response = (System.Net.HttpWebResponse)request.GetResponse())
                     {
@@ -236,9 +236,13 @@ namespace FlashWire
             if (item != null)
             {
                 string text = item.Content.ToString();
-                if (text.Contains("Turkcell"))
+                if (text.Contains("Superonline"))
                 {
-                    txtFooterEngine.Text = "Turkcell Profili • AdGuard DNS";
+                    txtFooterEngine.Text = "Superonline Fiber • AdGuard DNS";
+                }
+                else if (text.Contains("Turkcell"))
+                {
+                    txtFooterEngine.Text = "Turkcell Mobil • AdGuard DNS";
                 }
                 else if (text.Contains("Vodafone"))
                 {
@@ -348,13 +352,14 @@ namespace FlashWire
 
                     // Profile mapping
                     // 0: ⚡ Otomatik (Tüm Siteler & Discord - GoodbyeDPI + AdGuard DNS)
-                    // 1: 🔴 Turkcell (Superonline & Mobil)
-                    // 2: 🟣 Vodafone (Fiber & Redbox)
-                    // 3: 🔵 Türk Telekom (TTNet & Mobil)
-                    // 4: 🟡 TurkNet (GigaFiber & VDSL)
-                    // 5: 🟢 Türksat Kablonet
-                    // 6: 🌐 Evrensel Mod (GoodbyeDPI)
-                    if (selectedProfile == 0 || selectedProfile == 4 || selectedProfile == 6)
+                    // 1: 🔴 Turkcell (Mobil Veri)
+                    // 2: 🟠 Superonline (Fiber & VDSL)
+                    // 3: 🟣 Vodafone (Fiber & Redbox)
+                    // 4: 🔵 Türk Telekom (TTNet & Mobil)
+                    // 5: 🟡 TurkNet (GigaFiber & VDSL)
+                    // 6: 🟢 Türksat Kablonet
+                    // 7: 🌐 Evrensel Mod (GoodbyeDPI)
+                    if (selectedProfile == 0 || selectedProfile == 5 || selectedProfile == 7)
                     {
                         string gbdDir = Path.Combine(engineRoot, "goodbyedpi");
                         exePath = Path.Combine(gbdDir, "goodbyedpi.exe");
@@ -367,13 +372,13 @@ namespace FlashWire
                     }
                     else
                     {
-                        // Zapret2 engine for Turkcell, Vodafone, TTNet, Kablonet
+                        // Zapret2 engine for Turkcell, Superonline, Vodafone, TTNet, Kablonet
                         string zapDir = Path.Combine(engineRoot, "zapret");
                         exePath = Path.Combine(zapDir, "winws.exe");
                         workingDir = zapDir;
 
                         string technique = "--payload=tls_client_hello --lua-desync=multidisorder:pos=2:seqovl=1";
-                        if (selectedProfile == 2) // Vodafone
+                        if (selectedProfile == 3) // Vodafone
                         {
                             technique = "--payload=tls_client_hello --lua-desync=multisplit:blob=fake_default_tls:ip_ttl=5:pos=2:nodrop:repeats=1";
                         }

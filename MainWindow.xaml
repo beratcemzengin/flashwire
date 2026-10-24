@@ -1,7 +1,7 @@
 <Window x:Class="FlashWire.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FlashWire - High-Speed DPI &amp; DNS Shield" 
+        Title="FlashWire v3.0 - High-Speed DPI &amp; DNS Shield" 
         Icon="app.ico"
         Height="570" Width="360"
         WindowStyle="None" 
@@ -195,7 +195,7 @@
                         <TextBlock Text="FLASH" Foreground="#F8FAFC" FontWeight="ExtraBold" FontSize="14.5" VerticalAlignment="Center"/>
                         <TextBlock Text="WIRE" Foreground="#FFB800" FontWeight="ExtraBold" FontSize="14.5" VerticalAlignment="Center"/>
                         <Border Background="#1E2638" CornerRadius="6" Padding="5,1" Margin="8,0,0,0" VerticalAlignment="Center">
-                            <TextBlock Text="v2.0" Foreground="#94A3B8" FontSize="9.5" FontWeight="Bold"/>
+                            <TextBlock Text="v3.0" Foreground="#FFB800" FontSize="9.5" FontWeight="Bold"/>
                         </Border>
                     </StackPanel>
 
@@ -286,7 +286,8 @@
                         </Grid>
                         <ComboBox x:Name="cmbProfiles" Height="34" Style="{StaticResource DarkComboBoxStyle}" SelectionChanged="CmbProfiles_SelectionChanged">
                             <ComboBoxItem Content="⚡ Otomatik (Tüm Siteler &amp; Discord)" IsSelected="True"/>
-                            <ComboBoxItem Content="🔴 Turkcell (Superonline &amp; Mobil)"/>
+                            <ComboBoxItem Content="🔴 Turkcell (Mobil Veri)"/>
+                            <ComboBoxItem Content="🟠 Superonline (Fiber &amp; VDSL)"/>
                             <ComboBoxItem Content="🟣 Vodafone (Fiber &amp; Redbox)"/>
                             <ComboBoxItem Content="🔵 Türk Telekom (TTNet &amp; Mobil)"/>
                             <ComboBoxItem Content="🟡 TurkNet (GigaFiber &amp; VDSL)"/>
@@ -362,7 +363,7 @@
                         <TextBlock x:Name="txtFooterEngine" Text="AdGuard DNS • WinDivert x64" Foreground="#94A3B8" FontSize="10.5"/>
                     </StackPanel>
 
-                    <TextBlock Grid.Column="1" Text="FlashWire v2.0" Foreground="#64748B" FontSize="10" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="FlashWire v3.0" Foreground="#64748B" FontSize="10" FontWeight="SemiBold" VerticalAlignment="Center"/>
                 </Grid>
             </Border>
         </Grid>
