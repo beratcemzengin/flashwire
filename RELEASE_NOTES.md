@@ -1,4 +1,4 @@
-# ⚡ FlashWire v4.0 - Windows Service (services.msc) & Multiplatform Release
+# ⚡ FlashWire v4.1 - Critical SSL & DNS Fix (Windows & Android Release)
 
 > **Yüksek Hızlı DPI (Derin Paket İnceleme) ve DNS Engeli Aşma Kalkanı**  
 > Discord, Roblox, Wattpad ve tüm kısıtlı servislere sıfır ping ve hız kaybıyla tek tıkla bağlanın.
@@ -9,49 +9,40 @@
 
 | Platform | Dosya | Açıklama | Boyut | İndirme Bağlantısı |
 | :---: | :--- | :--- | :---: | :--- |
-| 🪟 **Windows** | **`FlashWire-v4.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (ZIP)](https://github.com/beratcemzengin/flashwire/releases/download/v4.0/FlashWire-v4.0-Windows-x64.zip) |
-| 🪟 **Windows** | **`FlashWire.exe`** | Bağımsız Tek Dosya Taşınabilir Program (Portable) | ~2.0 MB | [⬇️ İndir (EXE)](https://github.com/beratcemzengin/flashwire/releases/download/v4.0/FlashWire.exe) |
-| 🤖 **Android** | **`FlashWire-v4.0-Android.apk`** | **Android Mobil Sürüm** (Tüm Telefon & Tabletler) | ~3.5 MB | [⬇️ İndir (APK)](https://github.com/beratcemzengin/flashwire/releases/download/v4.0/FlashWire-v4.0-Android.apk) |
+| 🪟 **Windows** | **`FlashWire-v4.1-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (ZIP)](https://github.com/beratcemzengin/flashwire/releases/download/v4.1/FlashWire-v4.1-Windows-x64.zip) |
+| 🪟 **Windows** | **`FlashWire.exe`** | Bağımsız Tek Dosya Taşınabilir Program (Portable) | ~2.0 MB | [⬇️ İndir (EXE)](https://github.com/beratcemzengin/flashwire/releases/download/v4.1/FlashWire.exe) |
+| 🤖 **Android** | **`FlashWire-v4.1-Android.apk`** | **Android Mobil Sürüm** (Tüm Telefon & Tabletler) | ~3.5 MB | [⬇️ İndir (APK)](https://github.com/beratcemzengin/flashwire/releases/download/v4.1/FlashWire-v4.1-Android.apk) |
 
 ---
 
-### 🚀 v4.0 Sürüm Yenilikleri
+### 🚀 v4.1 Kritik Sürüm İyileştirmeleri (Hotfix)
 
-- ⚙️ **Gerçek Windows Hizmeti (`services.msc`) Mimarisi:**
-  - Ayarlar menüsüne entegre edilen **"7/24 Windows Hizmeti Kur"** butonuyla FlashWire'ı tek tıkla Windows'un resmi arka plan servislerine (`FlashWireService`) dahil edebilirsiniz.
-  - **Oturum Açılmasa Bile Otomatik Başlatma:** Bilgisayar her açıldığında FlashWire otomatik olarak arka planda devreye girer. Programı açmanıza veya her seferinde "Bağlan" demenize gerek kalmaz.
-  - **Kalıcı 7/24 Koruma:** GUI penceresini kapatsanız dahi Windows Hizmeti ve AdGuard DNS kalkanı arka planda kesintisiz çalışmayı sürdürür.
-  - **Tek Tıkla Kaldırma:** Dilediğiniz an Ayarlar menüsünden **"Hizmeti Kaldır"** butonuna basarak servisi tamamen silebilir ve normal taşınabilir moda dönebilirsiniz.
-- 🇹🇷 **Özel Superonline & Türkiye Operatör Profilleri:**
-  - Hem Windows PC hem de Android mobil sürümlerine bağımsız **`Superonline (Fiber & VDSL)`** profili entegre edildi.
-  - Superonline, Turkcell, Vodafone, Türk Telekom, TurkNet ve Kablonet için optimize edilmiş paket bölme (desync/multisplit) ayarları.
-- 🎨 **Obsidian & Cyberpunk Gold Tasarımı v4.0:** Arayüz başlık, rozet ve servis yönetimi bileşenleri v4.0 standardına yükseltildi.
-- 🚀 **Canlı Ağ & Site Teşhis Paneli:** Discord, Roblox, Wattpad, Ekşi Sözlük, Instagram ve YouTube için milisaniye cinsinden gecikme ve erişim testi.
-- 🛡️ **Entegre AdGuard DNS Kalkanı:** DNS zehirlenmelerini ve reklamları engelleyen otomatik koruma.
+- 🔒 **Kritik SSL Hatası Çözüldü (`ERR_SSL_PROTOCOL_ERROR` Fix):**
+  - v4.0'da kullanılan `-5` modu paketleri tersten gönderdiği (`--reverse-frag`) için Cloudflare, Google, mTLS ve TLS 1.3 kullanan web sitelerinde SSL el sıkışması çöküyordu.
+  - v4.1 ile motor, resmi ve en kararlı mod olan **`-1` (`-p -r -s -f 2 -k 2 -n -e 2`)** mimarisine geçirildi. Paketler sıralı ve nizami bölünerek DPI sansürü aşılırken, hiçbir sitenin SSL/HTTPS sertifikası bozulmaz.
+- ⚡ **Cloudflare DNS (`1.1.1.1` & `1.0.0.1`) Geçişi:**
+  - AdGuard DNS'in filtrelemeleri ve sorgu tıkanıklıkları kaldırılarak, dünyanın en hızlı ve tamamen tarafsız/nötr DNS'i olan **Cloudflare DNS** birincil ve ikincil DNS olarak atandı.
+- 🚨 **Ağı ve DNS'i Sıfırla (Acil Kurtarma Butonu):**
+  - Ayarlar menüsüne tek tıkla sistemi fabrika ayarlarına döndüren **"🚨 Ağı ve DNS'i Sıfırla"** butonu eklendi. Arka planda kalabilecek hizmetleri ve süreçleri anında temizler, DNS'i otomatik (DHCP) yapar.
+- ⚙️ **Windows Hizmeti (`services.msc`) Kararlılığı:**
+  - Hizmet parametreleri `-1` ve Cloudflare DNS ile güncellendi; 7/24 kesintisiz koruma SSL hatası vermeden güvenle çalışır hale getirildi.
 
 ---
 
 ### 🔒 Güvenlik & Dosya Doğrulama (SHA-256)
 
 ```text
-FlashWire-v4.0-Windows-x64.zip : DB301DC13B4D9F039E0A61E9250B353F7A70B2FB68EA5E79FECCE941716BF012
-FlashWire.exe                  : F5244E6FA1A77D99E72FFEF466DA8D7C494F5AB1C1243DF620E92D20EC06CF7A
-FlashWire-v4.0-Android.apk     : FB06561BC6A60CF702A3177F317B2058C6B2658D740B79A012B5A6FE53934954
+FlashWire-v4.1-Windows-x64.zip : FFDA8061D735A661E2DEA6B374EFA42789D53D5492774CF479F7606B9A456C40
+FlashWire.exe                  : 06662C09EA997CC2F09D49A65A6DE8BCE01E079C2866CB5AEBC4FBFD6E54071B
+FlashWire-v4.1-Android.apk     : A56850066EF3A9EF6E74024BB8063A919D4819E5CCB8628362F754537C27F7B0
 ```
-
-> 🛡️ **Windows SmartScreen Uyarısı Hakkında:**  
-> Windows ilk çalıştırmada "Kişisel bilgisayarınızı korudu" ekranı açarsa, **"Ek bilgi"** -> **"Yine de çalıştır"** butonuna basarak açabilirsiniz. Program açık kaynaklı ve güvenlidir.
-
----
-
-### 💡 Hızlı Kullanım
 
 #### Windows:
 1. `FlashWire.exe` dosyasını çalıştırın (SmartScreen uyarısında *Ek bilgi* -> *Yine de çalıştır* deyin).
 2. Windows UAC Yönetici iznine **Evet** deyin.
 3. **Manuel Mod:** Operatörünüzü seçip **⚡ BAĞLAN** butonuna tıklayın.
-4. **7/24 Otomatik Servis Modu (Önerilen):** Sağ üstteki **⚙ Ayarlar** çarkına tıklayın ve **"7/24 Windows Hizmeti Kur"** butonuna basın. Artık Windows her başladığında kalkanınız otomatik çalışır!
+4. **7/24 Otomatik Servis Modu (İsteğe Bağlı):** Sağ üstteki **⚙ Ayarlar** çarkına tıklayın ve **"7/24 Windows Hizmeti Kur"** butonuna basın.
 
 #### Android:
-1. `FlashWire-v4.0-Android.apk` dosyasını telefonunuza indirin ve kurun.
+1. `FlashWire-v4.1-Android.apk` dosyasını telefonunuza indirin ve kurun.
 2. Açıp profilinizi seçin ve **⚡ BAĞLAN** butonuna dokunun (VPN iznini onaylayın).

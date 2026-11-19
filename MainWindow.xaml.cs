@@ -451,7 +451,7 @@ namespace FlashWire
                             }
 
                             string binPath = string.Format(
-                                "\"{0}\" -5 --dns-addr 94.140.14.14 --dns-port 53 --dnsv6-addr 2a10:50c0::ad1:ff --dnsv6-port 53",
+                                "\"{0}\" -1 --dns-addr 1.1.1.1 --dns-port 53 --dnsv6-addr 2606:4700:4700::1111 --dnsv6-port 53",
                                 serviceExe);
 
                             // Stop previous if any
@@ -466,7 +466,7 @@ namespace FlashWire
                                 binPath);
                             RunHiddenCmd(createCmd);
 
-                            RunHiddenCmd("sc.exe description " + SERVICE_NAME + " \"FlashWire v4.0 - 7/24 Arka Plan DPI ve DNS Kalkanı Hizmeti\"");
+                            RunHiddenCmd("sc.exe description " + SERVICE_NAME + " \"FlashWire v4.1 - 7/24 Arka Plan DPI ve DNS Kalkanı Hizmeti\"");
                             RunHiddenCmd("sc.exe start " + SERVICE_NAME);
 
                             SetSystemDnsToAdGuard();
@@ -484,7 +484,7 @@ namespace FlashWire
                         UpdateServiceStatusUI();
                         System.Windows.MessageBox.Show(
                             "FlashWire başarıyla Windows Hizmeti (services.msc) olarak kuruldu!\n\nArtık Windows her açıldığında arka planda kendiliğinden başlayacak ve koruma 7/24 aktif kalacaktır.",
-                            "FlashWire v4.0 - Hizmet Kuruldu",
+                            "FlashWire v4.1 - Hizmet Kuruldu",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
                     }
@@ -507,6 +507,38 @@ namespace FlashWire
             {
                 btnServiceToggle.IsEnabled = true;
             }
+        }
+
+        private async void BtnEmergencyReset_Click(object sender, RoutedEventArgs e)
+        {
+            btnEmergencyReset.IsEnabled = false;
+            btnEmergencyReset.Content = "Sıfırlanıyor...";
+
+            await Task.Run(() =>
+            {
+                try
+                {
+                    RunHiddenCmd("sc.exe stop " + SERVICE_NAME + " >nul 2>&1");
+                    RunHiddenCmd("sc.exe delete " + SERVICE_NAME + " >nul 2>&1");
+                    KillStaleProcesses();
+                    ResetSystemDns();
+                    FlushDns();
+                }
+                catch { }
+            });
+
+            _isConnected = false;
+            SetDisconnectedUI();
+            UpdateServiceStatusUI();
+
+            btnEmergencyReset.Content = "🚨 Ağı ve DNS'i Sıfırla (Kurtarma)";
+            btnEmergencyReset.IsEnabled = true;
+
+            System.Windows.MessageBox.Show(
+                "Windows Hizmeti kaldırıldı, tüm arka plan motorları kapatıldı ve DNS ayarlarınız varsayılan (DHCP / Otomatik) haline getirildi.\n\nİnternet bağlantınız tamamen normale döndürüldü.",
+                "FlashWire - Kurtarma Başarılı",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
         }
 
         private async void BtnConnectToggle_Click(object sender, RoutedEventArgs e)
@@ -606,10 +638,11 @@ namespace FlashWire
                     {
                         string gbdDir = Path.Combine(engineRoot, "goodbyedpi");
                         exePath = Path.Combine(gbdDir, "goodbyedpi.exe");
-                        args = "-5 --dns-addr 94.140.14.14 --dns-port 53 --dnsv6-addr 2a10:50c0::ad1:ff --dnsv6-port 53";
+                        // v4.1: En kararlı -1 modu (SSL/Cloudflare hatasını önler) ve Cloudflare 1.1.1.1 DNS
+                        args = "-1 --dns-addr 1.1.1.1 --dns-port 53 --dnsv6-addr 2606:4700:4700::1111 --dnsv6-port 53";
                         workingDir = gbdDir;
 
-                        // AdGuard DNS uygula
+                        // Cloudflare DNS uygula
                         Task.Run(() => SetSystemDnsToAdGuard());
                         _isDnsChanged = true;
                     }
@@ -697,7 +730,7 @@ namespace FlashWire
                                 var gbdPsi = new ProcessStartInfo
                                 {
                                     FileName = gbdExe,
-                                    Arguments = "-5 --dns-addr 94.140.14.14 --dns-port 53 --dnsv6-addr 2a10:50c0::ad1:ff --dnsv6-port 53",
+                                    Arguments = "-1 --dns-addr 1.1.1.1 --dns-port 53 --dnsv6-addr 2606:4700:4700::1111 --dnsv6-port 53",
                                     WorkingDirectory = gbdDir,
                                     UseShellExecute = false,
                                     CreateNoWindow = true,
@@ -832,7 +865,8 @@ namespace FlashWire
         {
             try
             {
-                string cmd = "Get-NetAdapter | Where-Object { $_.Status -eq 'Up' -and $_.InterfaceDescription -notlike '*Virtual*' -and $_.InterfaceDescription -notlike '*Tailscale*' -and $_.InterfaceDescription -notlike '*Loopback*' -and $_.InterfaceDescription -notlike '*Hyper-V*' } | Set-DnsClientServerAddress -ServerAddresses ('94.140.14.14','1.1.1.1')";
+                // v4.1: Cloudflare DNS (1.1.1.1 / 1.0.0.1) - %100 Nötr, Güvenli ve Hızlı
+                string cmd = "Get-NetAdapter | Where-Object { $_.Status -eq 'Up' -and $_.InterfaceDescription -notlike '*Virtual*' -and $_.InterfaceDescription -notlike '*Tailscale*' -and $_.InterfaceDescription -notlike '*Loopback*' -and $_.InterfaceDescription -notlike '*Hyper-V*' } | Set-DnsClientServerAddress -ServerAddresses ('1.1.1.1','1.0.0.1')";
                 RunHiddenPowerShell(cmd);
             }
             catch { }

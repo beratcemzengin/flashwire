@@ -1,14 +1,14 @@
 <div align="center">
 
-# ⚡ FlashWire v4.0
+# ⚡ FlashWire v4.1
 ### Windows & Android İçin Yüksek Hızlı DPI ve DNS Engeli Aşma Kalkanı
 
 <p align="center">
-  <img src="assets/preview.png" alt="FlashWire v4.0 Arayüzü" width="340" style="border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
+  <img src="assets/preview.png" alt="FlashWire v4.1 Arayüzü" width="340" style="border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
 </p>
 
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Android-blue.svg?style=for-the-badge&logo=windows)](https://github.com/beratcemzengin/flashwire)
-[![Version](https://img.shields.io/badge/Versiyon-v4.0-FFB800.svg?style=for-the-badge&logo=speedtest)](https://github.com/beratcemzengin/flashwire/releases)
+[![Version](https://img.shields.io/badge/Versiyon-v4.1-FFB800.svg?style=for-the-badge&logo=speedtest)](https://github.com/beratcemzengin/flashwire/releases)
 [![License](https://img.shields.io/badge/Lisans-MIT-green.svg?style=for-the-badge)](LICENSE)
 [![Zero Ping Loss](https://img.shields.io/badge/Ping%20Kaybı-%C2%B10%20ms%20(VPN%20Değil)-success.svg?style=for-the-badge)](#-flashwire-nedir-ve-neler-yapabilir)
 
@@ -24,9 +24,9 @@ Güncel sürümler doğrudan GitHub Releases üzerinden yayınlanmaktadır. Hem 
 
 | Platform | Dosya Adı | Açıklama | Boyut | Doğrudan İndirme (Latest Release) |
 | :---: | :--- | :--- | :---: | :---: |
-| 🪟 **Windows** | **`FlashWire-v4.0-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (.ZIP)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v4.0-Windows-x64.zip) |
+| 🪟 **Windows** | **`FlashWire-v4.1-Windows-x64.zip`** | **Önerilen PC Paketi** (FlashWire.exe + Hızlı Başlatıcı + Kılavuz) | ~2.0 MB | [⬇️ İndir (.ZIP)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v4.1-Windows-x64.zip) |
 | 🪟 **Windows** | **`FlashWire.exe`** | Tek Dosya Bağımsız Portable Uygulama | ~2.0 MB | [⬇️ İndir (.EXE)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire.exe) |
-| 🤖 **Android** | **`FlashWire-v4.0-Android.apk`** | **Android Mobil Uygulama** (Telefon & Tablet) | ~3.5 MB | [⬇️ İndir (.APK)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v4.0-Android.apk) |
+| 🤖 **Android** | **`FlashWire-v4.1-Android.apk`** | **Android Mobil Uygulama** (Telefon & Tablet) | ~3.5 MB | [⬇️ İndir (.APK)](https://github.com/beratcemzengin/flashwire/releases/latest/download/FlashWire-v4.1-Android.apk) |
 
 > [!TIP]  
 > 🔗 **Tüm Sürümler ve Değişiklik Geçmişi (Changelog):**  
@@ -43,22 +43,23 @@ Geleneksel VPN'ler tüm internet trafiğinizi yurt dışındaki uzak ve yavaş s
 - **⚙️ 7/24 Windows Hizmeti (v4.0 YENİLİK):** Windows servislerine (`services.msc`) tek tıkla entegre olur. PC açıldığında oturum açılmasa bile arka planda otomatik çalışır!
 - **Discord & Roblox Erişimi:** Discord masaüstü ve mobil uygulamasını, ses kanallarını, ekran paylaşımlarını ve Roblox'u gecikmesiz açar.
 - **Tüm Engelli Servisler:** Wattpad, Ekşi Sözlük, Instagram ve sansürlenen diğer siteleri pürüzsüz açar.
-- **AdGuard Güvenli DNS:** İSS tarafındaki DNS zehirleme (DNS hijacking) girişimlerini önler ve istenmeyen reklamları engeller.
+- **Cloudflare Güvenli DNS (1.1.1.1 & 1.0.0.1):** İSS tarafındaki DNS zehirleme (DNS hijacking) girişimlerini önler ve siteleri sıfır gecikmeyle açar.
 - **Tamamen Taşınabilir (Portable):** Windows sürümünde kurulum zorunluluğu yoktur (ister portable ister servis olarak çalıştırın), Android sürümünde ise root gerekmez.
 
 ---
 
-## ⚙️ v4.0 Windows Hizmeti (services.msc) Mimarisi
+## ⚙️ v4.1 Windows Hizmeti (services.msc) & Güvenlik Mimarisi
 
-FlashWire v4.0 ile artık her bilgisayarı açtığınızda programı manuel olarak başlatmak zorunda değilsiniz:
+FlashWire v4.1 ile artık her bilgisayarı açtığınızda programı manuel olarak başlatmak zorunda değilsiniz:
 
 1. **Ayarlar (⚙)** çarkına tıklayın.
 2. Açılan panelde **"7/24 Windows Hizmeti Olarak Kur"** butonuna basın.
-3. FlashWire, sistem motorunu `%ProgramData%\FlashWire\engine` klasörüne yerleştirir ve Windows Hizmet Yöneticisi'ne (`FlashWireService`) kaydeder.
+3. FlashWire, en kararlı `-1` modunda motorunu `%ProgramData%\FlashWire\engine` klasörüne yerleştirir ve Windows Hizmet Yöneticisi'ne (`FlashWireService`) kaydeder.
 4. **Sonuç:**
    - Bilgisayarınız her yeniden başladığında, siz oturum açmasanız dahi FlashWire arka planda 7/24 çalışır.
    - FlashWire arayüzünü (GUI) kapatsanız bile koruma asla kesilmez.
-   - İstediğiniz zaman aynı menüden **"Hizmeti Kaldır"** butonuna basarak sistemi ilk haline getirebilirsiniz.
+   - `-1` modu sayesinde Cloudflare, bankalar veya SSL sertifikaları asla `ERR_SSL_PROTOCOL_ERROR` hatası vermez.
+   - İstediğiniz zaman aynı menüden **"Hizmeti Kaldır"** veya **"🚨 Ağı ve DNS'i Sıfırla"** butonuna basarak sistemi anında ilk haline getirebilirsiniz.
 
 ---
 

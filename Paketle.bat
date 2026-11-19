@@ -2,7 +2,7 @@
 chcp 65001 >nul
 title FlashWire Release Paketleyici
 echo ==============================================
-echo  FlashWire v4.0 - Release Paketi Oluşturuluyor
+echo  FlashWire v4.1 - Release Paketi Oluşturuluyor
 echo ==============================================
 
 echo [1/3] MSBuild ile x64 Release derleniyor...
@@ -21,7 +21,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command "& { `
     `$binExe = Join-Path '%~dp0' 'bin\Release\FlashWire.exe'; `
     `$rootExe = Join-Path '%~dp0' 'FlashWire.exe'; `
     `$relExe = Join-Path `$relDir 'FlashWire.exe'; `
-    `$zipPath = Join-Path `$relDir 'FlashWire-v4.0-Windows-x64.zip'; `
+    `$zipPath = Join-Path `$relDir 'FlashWire-v4.1-Windows-x64.zip'; `
     `$staging = Join-Path `$env:TEMP 'FlashWire_Staging'; `
     if (Test-Path `$staging) { Remove-Item `$staging -Recurse -Force }; `
     New-Item -ItemType Directory -Path `$staging -Force; `
@@ -31,7 +31,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command "& { `
     Copy-Item (Join-Path '%~dp0' 'Baslat.bat') (Join-Path `$staging 'Baslat.bat') -Force; `
     `$readme = @' `
 ============================================================ `
-⚡ FLASHWIRE v4.0 (Windows x64) - Hizli Baslangic Kilavuzu `
+⚡ FLASHWIRE v4.1 (Windows x64) - Hizli Baslangic Kilavuzu `
 ============================================================ `
 FlashWire, Windows uzerinde DPI ve DNS engellerini asarak `
 Discord, Roblox ve tum engelli sitelere tek tikla sifir `
